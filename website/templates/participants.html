@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('../static/home.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        th, td {
+            border: 1px solid #000;
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btnBack {
+            display: inline-block;
+            background-color: #041207;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btnUpdate, .btnDelete {
+            display: inline-block;
+            padding: 8px 12px;
+            margin-right: 5px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .btnUpdate {
+            background-color: #337ab7;
+            color: white;
+        }
+
+        .btnDelete {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .btnUpdate:hover, .btnDelete:hover {
+            background-color: #23527c;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('views.admin_dashboard') }}" class="btnBack">Back</a>
+    <h1 style="color: #f2f2f2;">Participants Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Reg No.</th>
+                <th>Gender</th>
+                <th>Semester</th>
+                <th>Event 1</th>
+                <th>Event 2</th>
+                <th>Event 3</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <!-- Display participant details -->
+                    <td>{{ row.full_name }}</td>
+                    <td>{{ row.reg_no }}</td>
+                    <td>{{ row.gender }}</td>
+                    <td>{{ row.semester }}</td>
+                    <td>{{ row.event1 }}</td>
+                    <td>{{ row.event2 }}</td>
+                    <td>{{ row.event3 }}</td>
+                    
+                    <!-- Update button -->
+                    <!-- Inside the table where you display participant details -->
+                    <td><a href="{{ url_for('views.update_participant', participant_id=row.id) }}" class="btnUpdate">Update</a></td>
+
+                    
+                    <!-- Delete button -->
+                    <td>
+                        <form action="{{ url_for('views.delete_event', event_id=row.id) }}" method="post">
+                            <button type="submit" class="btnDelete" onclick="return confirm('Are you sure you want to delete this participant?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

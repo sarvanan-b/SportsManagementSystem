@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('../static/home.jpg');
+            background-size: cover;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #f8f2f2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        th, td {
+            border: 1px solid #000;
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btnBack {
+            display: inline-block;
+            background-color: #041207;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('views.dashboard') }}" class="btnBack">Back</a>
+    <h1>Result Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sport Name</th>
+                <th>Name</th>
+                <th>Results</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.sport_name }}</td>
+                    <td>{{ row.full_name }}</td>
+                    <td>{{ row.result }}</td>
+                    
+                </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

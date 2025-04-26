@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <link rel="stylesheet" href="../static/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <h2 class="logo">Admin Panel</h2>
+        <nav class="navigation">
+            <a href="{{url_for('views.participants')}}">Participants</a>
+            <a href="{{ url_for('views.eventdetails')}}">Add Event</a>
+            <a href="{{url_for('views.result')}}">Add Result</a>
+            <a href="{{ url_for('views.view_events') }}">View Event</a>
+            <a href="{{ url_for('views.home') }}">Logout</a>
+            <a  class="fa fa-bell" id="bellIcon" onclick="toggleNotifi()" style="font-size:20px;color:white"></a>
+        </nav>
+    </header>
+
+    <section class="welcome-section">
+        <h1>Welcome to the Admin Panel</h1>
+        <h3>Winners in life don't alwalys win;</h3>
+        <h3>they just don't give up</h3>
+        
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Shiv Nadar University. All rights reserved.</p>
+    </footer>
+
+   
+    <div class="notifi-box " id="box">
+        <h2>Notifications</h2>
+        <div class="notifi-item">
+            <div class="text">
+                {% for info in data%}
+                    <h4>{{info.first_name}}</h4>
+                    <p>{{info.mobile}}</h4>
+                    <p>{{info.message}}</p>
+                {% endfor %}
+            </div> 
+        </div>
+        
+        
+
+    </div>
+
+    <script src="../static/home.js"></script>
+    <script>
+        var box  = document.getElementById('box');
+        var down = false;
+        function toggleNotifi(){
+            if (down) {
+                box.style.height  = '0px';
+                box.style.opacity = 0;
+                down = false;
+            }else {
+                box.style.height  = '510px';
+                box.style.opacity = 1;
+                down = true;
+            }
+        }
+        </script>
+    </body>
+    </html>
+
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <a href="{{ url_for('views.dashboard') }}" class="btnBack">Back</a>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('../static/home.jpg');
+            background-size: cover;
+            background-position: center;
+          
+        }
+
+        h1 {
+            text-align: center;
+            color: #f8f2f2;
+           
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        th, td {
+            border: 1px solid #000; /* Set border color to black */
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btnBack {
+            display: inline-block;
+            background-color: #041207;
+            color: white;
+            text-decoration: none; /* Corrected the text-decoration property */
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1; /* Added 1px solid black border */
+            cursor: pointer;
+            font-size: 16px;
+                 
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tournament Name</th>
+                <th>Sport Name</th>
+                <th>Gender Category</th>
+                <th>Date</th>
+                <th>Venue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.tournament_name }}</td>
+                    <td>{{ row.sport_name }}</td>
+                    <td>{{ row.gender }}</td>
+                    <td>{{ row.venue_date }}</td>
+                    <td>{{ row.venue }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

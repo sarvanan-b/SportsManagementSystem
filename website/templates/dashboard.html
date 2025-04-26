@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/dashboard.css">
+</head>
+<body>
+
+    <header>
+        <h2 class="logo">Student Panel</h2>
+        <nav class="navigation">
+            <a href="{{ url_for('views.view_events') }}">View Event</a>
+            <a href="{{ url_for('views.event') }}">Choose Event</a>
+            <a href="{{ url_for('views.contactus') }}">Contact</a>
+            <a href="{{url_for('views.view_result')}}">Result</a>
+            <a href="{{ url_for('views.home') }}">Logout</a>
+            
+        </nav>
+    </header>
+
+
+    <!-- Welcome Message -->
+    <section class="welcome-section">
+        <h1 >Welcome to the Student Panel</h1>
+        <h3 >Winners in life don't alwalys win;</h3>
+        <h3 >they just don't give up</h3>
+        
+    </section>
+
+
+    <!-- Your main content goes here -->
+
+    <footer>
+        <p>&copy; 2023 Shiv Nadar University. All rights reserved.</p>
+    </footer>
+    <script>
+        
+    </script>
+    <script src="../static/home.js"></script>
+</body>
+</html>
